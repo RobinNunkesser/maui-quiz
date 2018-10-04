@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:local="clr-namespace:Quiz"
+     x:Class="Quiz.StatisticsPage"
+     BindingContext="{x:Static local:StatisticsSingleton.Instance}">
+    <ContentPage.Content>
+        <StackLayout Padding="20,20,20,0">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Bearbeitete Fragen" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{Binding AnsweredQuestions}" HorizontalOptions="End"/>
+            </StackLayout> 
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Richtig beantwortet" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{Binding CorrectAnswers}" HorizontalOptions="End"/>
+            </StackLayout> 
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Falsch beantwortet" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{Binding FalseAnswers}" HorizontalOptions="End"/>
+            </StackLayout> 
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Übersprungen" HorizontalOptions="StartAndExpand"/>
+                <Label Text="{Binding SkippedAnswers}" HorizontalOptions="End"/>
+            </StackLayout> 
+        </StackLayout>        
+    </ContentPage.Content>
+</ContentPage>
