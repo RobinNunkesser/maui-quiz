@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Quiz
 {
     public partial class StatisticsPage : ContentPage
     {
-        public StatisticsPage()
+        public StatisticsPage(object bindingContext)
         {
             InitializeComponent();
+            BindingContext = bindingContext;
         }
     }
 }

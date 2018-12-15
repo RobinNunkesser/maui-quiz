@@ -16,6 +16,12 @@ namespace Quiz
             ("Liechtenstein hat keinen eigenen Flughafen.", true),
             ("Die meisten Subarus werden in China hergestellt.", false)};
 
+        public int AnsweredQuestions => CorrectAnswers + FalseAnswers 
+                                                       + SkippedAnswers;
+        public int CorrectAnswers { get; set; } = 0;
+        public int FalseAnswers { get; set; } = 0;
+        public int SkippedAnswers { get; set; } = 0;
+
         public string Question => questions[index].Item1;
         public ICommand AnswerCommand { get; private set; }
         public ICommand SkipCommand { get; private set; }
@@ -57,10 +63,10 @@ namespace Quiz
 
         void EvaluateAnswer(bool value) {
             if (questions[index].Item2 == value) {
-                StatisticsSingleton.Instance.CorrectAnswers++;
+                CorrectAnswers++;
                 Answer = "Richtig!";
             } else {
-                StatisticsSingleton.Instance.FalseAnswers++;
+                FalseAnswers++;
                 Answer = "Falsch!";
             }
             IncreaseIndex(); 
@@ -68,7 +74,7 @@ namespace Quiz
 
         void Skip()
         {
-            StatisticsSingleton.Instance.SkippedAnswers++;
+            SkippedAnswers++;
             IncreaseIndex();
         }
 

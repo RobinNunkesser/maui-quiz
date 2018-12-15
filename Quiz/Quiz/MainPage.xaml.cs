@@ -28,7 +28,7 @@ namespace Quiz
 
         async void Statistics_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new StatisticsPage());
+            await Navigation.PushAsync(new StatisticsPage(BindingContext));
         }
     }
 }
