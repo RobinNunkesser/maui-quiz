@@ -15,11 +15,11 @@
             </StackLayout> 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Falsch beantwortet" HorizontalOptions="StartAndExpand"/>
-                <Label Text="{Binding FalseAnswers}" HorizontalOptions="End"/>
+                <Label Text="{Binding WrongAnswers}" HorizontalOptions="End"/>
             </StackLayout> 
             <StackLayout Orientation="Horizontal">
                 <Label Text="Übersprungen" HorizontalOptions="StartAndExpand"/>
-                <Label Text="{Binding SkippedAnswers}" HorizontalOptions="End"/>
+                <Label Text="{Binding SkippedQuestions}" HorizontalOptions="End"/>
             </StackLayout> 
         </StackLayout>        
     </ContentPage.Content>

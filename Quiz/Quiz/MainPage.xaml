@@ -4,7 +4,7 @@
      xmlns:local="clr-namespace:Quiz" x:Class="Quiz.MainPage"
              BindingContext="{local:MainViewModel}"
              Title="Quiz">
-         <ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="statisticsButton" Text="Statistics" Clicked="Statistics_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>           
@@ -14,14 +14,14 @@
         <Label x:Name="answerLabel" Text="{Binding Answer}" HorizontalOptions="Center"
              VerticalOptions="Center" Opacity="0" />
         <StackLayout Orientation="Horizontal" VerticalOptions="End">
-            <Button x:Name="falseButton" Text="Falsch" HorizontalOptions="StartAndExpand" 
+            <Button x:Name="falseButton" Text="Falsch" HorizontalOptions="CenterAndExpand" 
                     Clicked="Answer_Clicked"
                     Command="{Binding AnswerCommand}">
                 <Button.CommandParameter>
                     <x:Boolean>False</x:Boolean>
                 </Button.CommandParameter>
             </Button>                    
-            <Button x:Name="trueButton" Text="Richtig" HorizontalOptions="EndAndExpand" 
+            <Button x:Name="trueButton" Text="Richtig" HorizontalOptions="CenterAndExpand" 
                     Clicked="Answer_Clicked"
                     Command="{Binding AnswerCommand}">
                 <Button.CommandParameter>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,11 +17,11 @@ namespace Quiz
             ("Liechtenstein hat keinen eigenen Flughafen.", true),
             ("Die meisten Subarus werden in China hergestellt.", false)};
 
-        public int AnsweredQuestions => CorrectAnswers + FalseAnswers 
-                                                       + SkippedAnswers;
+        public int AnsweredQuestions => CorrectAnswers + WrongAnswers 
+                                                       + SkippedQuestions;
         public int CorrectAnswers { get; set; } = 0;
-        public int FalseAnswers { get; set; } = 0;
-        public int SkippedAnswers { get; set; } = 0;
+        public int WrongAnswers { get; set; } = 0;
+        public int SkippedQuestions { get; set; } = 0;
 
         public string Question => questions[index].Item1;
         public ICommand AnswerCommand { get; private set; }
@@ -34,7 +35,7 @@ namespace Quiz
             {
                 if (value!=answer) {
                     answer = value;
-                    OnPropertyChanged("Answer");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -66,7 +67,7 @@ namespace Quiz
                 CorrectAnswers++;
                 Answer = "Richtig!";
             } else {
-                FalseAnswers++;
+                WrongAnswers++;
                 Answer = "Falsch!";
             }
             IncreaseIndex(); 
@@ -74,24 +75,19 @@ namespace Quiz
 
         void Skip()
         {
-            SkippedAnswers++;
+            SkippedQuestions++;
             IncreaseIndex();
         }
 
         void IncreaseIndex() {
-            Index = ++Index % questions.Count;
+            Index = (Index + 1) % questions.Count;
         }
 
+        #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string name = "") =>
+          PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        #endregion
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            var changed = PropertyChanged;
-            if (changed != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-        }
     }
 }
