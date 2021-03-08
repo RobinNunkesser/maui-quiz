@@ -49,7 +49,7 @@ namespace Quiz
                 if (value != index)
                 {
                     index = value;
-                    OnPropertyChanged("Question");
+                    OnPropertyChanged(nameof(Question));
                 }
             }
         }
