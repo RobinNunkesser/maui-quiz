@@ -19,9 +19,9 @@ namespace Quiz
 
         public int AnsweredQuestions => CorrectAnswers + WrongAnswers
                                                        + SkippedQuestions;
-        public int CorrectAnswers { get; set; } = 0;
-        public int WrongAnswers { get; set; } = 0;
-        public int SkippedQuestions { get; set; } = 0;
+        public int CorrectAnswers { get; private set; } = 0;
+        public int WrongAnswers { get; private set; } = 0;
+        public int SkippedQuestions { get; private set; } = 0;
 
         public string Question => questions[index].Item1;
         public ICommand AnswerCommand { get; private set; }
